@@ -1,0 +1,10 @@
+version: "3"
+services:
+  deconz_exporter:
+    image: deconz-websocket-to-influx:latest
+    container_name: deconz-websocket-to-influx
+    environment:
+      - INFLUX_DB_NAME=dbname
+      - INFLUX_DB_HOST=dbhost
+      - INFLUX_DB_PORT=8086
+      - DECONZ_WEBSOCKET_URI=ws://deconz.local:443
