@@ -9,6 +9,9 @@ I prefer this over periodic Prometheus polling, since different sensors report v
 ## Install
 
 Clone the repo
+
 Edit the environment variables in docker-compose.yml
+
 Build the container
+
 Launch the thing with `docker-compose up -d` 
