@@ -1,9 +1,9 @@
 import os
+import json
 import asyncio
 import websockets
-import json
-from influxdb import InfluxDBClient
 from datetime import datetime
+from influxdb import InfluxDBClient
 
 #################################################
 # What state attributes are we interested in?
@@ -18,10 +18,9 @@ def push_to_influx(x):
 def verify(x):
     for attribute in attributes:
         try:
-            if x["state"][attribute]:
-                payload = '%s %s=%i' % (x["id"], attribute, x["state"][attribute])
-                print('%s - %s' % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), payload))
-                push_to_influx(payload)
+            payload = '%s %s=%i' % (x["id"], attribute, x["state"][attribute])
+            print('%s - %s' % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), payload))
+            push_to_influx(payload)
         except KeyError:
             pass
 
