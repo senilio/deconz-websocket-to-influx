@@ -1,7 +1,7 @@
 # deconz-websocket-to-influx
-This script listens to deCONZ websocket events. If it finds one of the sensor attributes listed, it pushed the values to InfluxDB. Once we have the value in InfluxDB, we can easily display the sensors in Grafana.
+This script listens to deCONZ websocket stream. If it finds a sensor with the "whitelisted" attributes, it pushes the value to InfluxDB. Once we have the value in InfluxDB, we can easily display the sensors in Grafana.
 
-I prefer this over periodic Prometheus polling, since different sensors report values in different intervals. For instance, it makes no sense to poll the deCONZ API every minute for temperature sensor values that updates every 15 minutes. Just as it makes no sense to poll every minute for power reading that updates every 5 seconds. This way, readings are triggered by websocket events as they are reported to the controller, and we only get what we need into the DB.
+I prefer this over periodic Prometheus polling, since different sensors report values in different intervals. For instance, it makes no sense to poll the deCONZ API every minute for temperature sensor values that updates every 15 minutes. Just as it makes no sense to poll every minute for power reading that updates every 5 seconds. With this method, DB writes are triggered by websocket events, and we only get what we need into the DB.
 
 
 ## Install
