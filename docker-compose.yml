@@ -1,6 +1,7 @@
 version: "3"
 services:
   deconz_exporter:
+    restart: unless-stopped
     image: deconz-websocket-to-influx:latest
     container_name: deconz-websocket-to-influx
     environment:
